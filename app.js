@@ -27,6 +27,10 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+app.get('/result', (req, res) => {
+  res.render('result')
+})
+
 app.listen(port, () => {
   console.log(`Express is running on http://localbost:${port}`)
 })
