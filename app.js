@@ -1,8 +1,10 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
+const mongoose = require('mongoose')
+const methodOverride = require('method-override')
+
 const app = express()
 const port = 3000
-const mongoose = require('mongoose')
 
 mongoose.connect('mongodb://localhost/short-url-generator')
 
@@ -18,7 +20,7 @@ db.once('open', () => {
 
 app.engine('hbs', exphbs(({ defaultLayout: 'main', extname: '.hbs' })))
 app.set('view engine', 'hbs')
-pp.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 
 app.get('/', (req, res) => {
