@@ -1,14 +1,10 @@
 <div class="container">
-  <h2 class="d-flex justify-content-center mt-5">URL Shortener</h2>
-  <div class="d-flex justify-content-center my-5">
-    <img class="img" style="width: 30%;"
-      src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png" alt="">
-  </div>
+  <form action="/result" method="POST">
   <div class="d-flex justify-content-center mb-3">
-    <input type="text" class="form-control" placeholder="Input URL here" aria-label="Recipient's username"
-        aria-describedby="button-addon2" style=" width: 70%; ">
+    <input type="text" id="originalUrl" class="form-control" value="https://" style=" width: 50%; ">
   </div>
   <div class="input-group-append d-flex justify-content-center">
-      <button class="btn btn-outline-info" type="button" id="button-addon2">Shorten</button>
+      <button class="btn btn-outline-info" type="submit" id="Shorten">Shorten</button>
   </div>
+  </form>
 </div>
