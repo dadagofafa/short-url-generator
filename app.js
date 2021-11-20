@@ -1,8 +1,7 @@
 const express = require('express')
-
 const exphbs = require('express-handlebars')
 const routes = require('./routes')
-const url = require('./models/url')
+const URL = require('./models/URL')
 const random5digits = require('./random5digits')
 
 require('./config/mongoose')
@@ -17,7 +16,7 @@ app.use(routes)
 
 app.get('/:id', (req, res) => {
   const id = req.params.id
-  url.find({ shortUrl: id })
+  URL.find({ shortUrl: id })
     .then(data => res.redirect(data[0].originalUrl))
     .catch(error => console.log(error))
 })
