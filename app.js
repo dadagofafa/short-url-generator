@@ -2,6 +2,8 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 require('./config/mongoose')
 
+const url = require('./models/url')
+const random5digits = require('./random5digits')
 
 const app = express()
 const port = 3000
