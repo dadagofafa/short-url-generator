@@ -14,15 +14,24 @@ app.set('view engine', 'hbs')
 app.use(express.urlencoded({ extended: true }))
 app.use(routes)
 
-app.get('/:id', (req, res) => {
-  const id = req.params.id
-  URL.find({ shortUrl: id })
-    .then(data => res.redirect(data[0].originalUrl))
-    .catch(error => console.log(error))
+app.get('/:shortUrl', (req, res) => {
+  const { shortUrl } = req.params
+
+  URL.findOne({ shortUrl })
+    .then(data => {
+      if (!data) {
+        return res.render("error", {
+          errorMessage: "Can't found the URL",
+          errorURL: req.headers.host + "/" + shortUrl,
+        })
+      }
+      res.redirect(data.originalURL)
+    })
+    .catch(error => console.error(error))
 })
 
 app.listen(port, () => {
-  console.log(`Express is running on http://localbost:${port}`)
+  console.log(`Express is running on localhost:${port}`)
 })
 
 
