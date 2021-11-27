@@ -25,7 +25,7 @@ app.get('/:shortUrl', (req, res) => {
           errorURL: req.headers.host + "/" + shortUrl,
         })
       }
-      res.redirect(data.originalURL)
+      res.redirect(data.originalUrl)
     })
     .catch(error => console.error(error))
 })
